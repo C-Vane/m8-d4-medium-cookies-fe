@@ -1,0 +1,10 @@
+{
+  "title": "Integrate Touch ID and Face ID to your React Native App",
+  "content": "Using Touch ID also known as fingerprint authentication is extremely popular in mobile apps. The Touch ID feature secures the app and makes it a seamless authentication flow for the user. Many banking apps like Bank of America, Discover, Chase, use Touch ID authentication enabling secure and seamless authentication. The users don’t have to type the long passwords every time at login, by allowing them to login with their Touch ID. With the iPhone X we have the provision to use Face ID authentication. Both Touch ID and Face ID authentication have improved the user’s interaction with mobile apps, making them secure.",
+  "author": {
+    "name": "Adhiti Ravichandran",
+    "photo": ""
+  },
+  "createdAt": "Sep 23,2018",
+  "readTime": 3
+}

@@ -1,0 +1,18 @@
+#search-page {
+    input[type="search"] {
+        border-bottom: 1px solid black;
+        border-top: none;
+        border-left: none;
+        border-right: none;
+        font-size: 2.5em;
+        font-weight: bold;
+        width: 100%;
+        &:focus {
+            outline: none;
+        }
+    }
+
+    .selected {
+        font-weight: 700;
+    }
+}

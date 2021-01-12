@@ -1,0 +1,56 @@
+#topics-page {
+    h2 {
+        font-weight: 700;
+        margin: 2em 0;
+    }
+    
+    .subject-wrapper {
+        position: relative;
+        &::after {
+            content: ' ';
+            width: 100%;
+            border: 1px solid rgba(211, 211, 211, 0.5);
+            display: inline-block;
+            position: absolute;
+            bottom: 5px;
+            z-index: -1;
+        };
+    }
+
+    h4 {
+        margin-bottom: 0px;
+        font-weight: 700;
+        font-size: 1.3em;
+        letter-spacing: 0.5px;
+        &::after {
+            content: ' ';
+            width: 100%;
+            border: 1px solid rgba(0, 0, 0, 0.5);
+            display: inline-block;
+            height: 0px;
+        }
+    }
+
+    .card {
+        border-radius: 0px;
+    }
+
+    .topic-title {
+        display: flex;
+        font-weight: 700;
+        color: black;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .btn-outline-dark {
+        height: 40px;
+        width: 40px;
+        &:hover {
+            background-color:transparent;
+        }
+        path {
+            fill: #1a8917;
+        }
+    }
+}

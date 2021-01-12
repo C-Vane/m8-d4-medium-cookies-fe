@@ -1,0 +1,81 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&display=swap");
+
+:root {
+  --title-color: #000;
+  --text-color: #757575;
+  --button-color: #298917;
+}
+
+body {
+  margin: 0;
+  font-family: "Roboto";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: var(--text-color);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--title-color);
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.vd {
+  display: flex;
+  width: 10;
+  height: 100%;
+  background-color: black;
+}
+
+.btn {
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-success {
+  background-color: var(--button-color);
+}
+
+.dropdown-menu {
+  top: 50px;
+  left: -50px;
+}
+
+.dropdown-toggle {
+  padding-top: 7.5px;
+  padding-left: 15px;
+  cursor: pointer;
+}
+
+.dropdown-toggle::after {
+  display: none;
+}
+
+a.dropdown-item.active {
+  background-color: inherit;
+  color: black;
+}
+
+a.dropdown-item:hover {
+  background-color: inherit;
+  color: black;
+}
+
+a {
+  color: inherit;
+}

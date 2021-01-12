@@ -1,0 +1,124 @@
+[
+  {
+    "_id": "string",
+    "headLine": "My hate level of redux: I created a new library",
+    "subHead": "If you have been using recoil for a while, you might have faced it: outside React Components, it's not possible to get or update values from atoms. This Typescript implementation relying on RxJS will workaround this issue and let you do so.",
+    "content": "string",
+    "author": "Luis Antonio Canettoli Ordoñez",
+    "cover": "https://miro.medium.com/fit/c/376/282/1*LhEgzn_fJ2KmBc8Ld7mEfA.png",
+    "category": "redux",
+    "createdAt": "",
+    "updatedAt": ""
+  },
+  {
+    "_id": "string",
+    "headLine": "A First Look at React’s New Server Components",
+    "subHead": "Explaining the new approach to fetching data in React.js.",
+    "content": "string",
+    "author": "Louis Petrik",
+    "cover": "https://miro.medium.com/max/700/1*y6C4nSvy2Woe0m7bWEn4BA.png",
+    "category": "tech",
+    "createdAt": "",
+    "updatedAt": ""
+  },
+  {
+    "_id": "string",
+    "headLine": "6 Front-End Coding Ideas That Will Get You Fired Up to Code",
+    "subHead": "Here’s a bit of coding inspiration",
+    "content": "string",
+    "author": "Indrek Lasn",
+    "cover": "https://miro.medium.com/max/700/0*4d4bMZ9s9w68-PbV",
+    "createdAt": "",
+    "updatedAt": ""
+  },
+  {
+    "_id": "string",
+    "headLine": "Solving Canva’s Technical Challenge With a Single Reduce Function",
+    "subHead": "All the things you need to know to go from beginner to expert",
+    "content": "string",
+    "author": "Michael Chi",
+    "cover": "https://miro.medium.com/max/1000/1*kxK8R9YvYBC9UpniV1aaqQ.png",
+    "createdAt": "",
+    "updatedAt": ""
+  },
+  {
+    "_id": "string",
+    "headLine": "7 Magic Phrases That Make You Instantly Likable on Video Calls",
+    "subHead": "“I love the way you think.”",
+    "content": "string",
+    "author": "Michael Chi",
+    "cover": "https://miro.medium.com/fit/c/200/133/1*wR8cC9ONt5ZTYezHVe2Upw.jpeg",
+    "createdAt": "",
+    "updatedAt": ""
+  },
+  {
+    "_id": "string",
+    "headLine": "A 2021 Roadmap to Learning React  ",
+    "subHead": "The Dark Side Of Mindfulness No One is Talking About",
+    "content": "string",
+    "author": "Mehboob Khan",
+    "cover": "https://miro.medium.com/fit/c/200/133/0*LkNCfqjYH2fSHx1_",
+    "createdAt": "",
+    "updatedAt": ""
+  },
+  {
+    "_id": "string",
+    "headLine": "Facebook Chucked Its Own Rulebook to Ban Trump",
+    "subHead": "The move is a reminder of social platforms’ power over online speech — and the inconsistency with which they wield it",
+    "content": "string",
+    "author": "Michael Chi",
+    "cover": "https://miro.medium.com/fit/c/200/133/1*w1DiOdk8YYYZ5IbsnhiYNA.jpeg",
+    "createdAt": "",
+    "updatedAt": ""
+  },
+  {
+    "_id": "string",
+    "headLine": "5 Books Bill Gates Thinks You Should Read in 2021",
+    "subHead": "A reading list that will inspire you to think differently.",
+    "content": "string",
+    "author": "Michael Chi",
+    "cover": "https://miro.medium.com/fit/c/200/133/1*LxHwNz89_BNVbNlmaLFzeA.jpeg",
+    "createdAt": "",
+    "updatedAt": ""
+  },
+  {
+    "_id": "string",
+    "headLine": "6 Examples to Improve Your SQL Skills",
+    "subHead": "Creating complex select queries",
+    "content": "string",
+    "author": "Michael Chi",
+    "cover": "https://miro.medium.com/fit/c/200/133/1*v5HHnLCJIYvtZzK2wCcOjg.jpeg",
+    "createdAt": "",
+    "updatedAt": ""
+  },
+  {
+    "_id": "string",
+    "headLine": "A 2021 Roadmap to Learning React  ",
+    "subHead": "All the things you need to know to go from beginner to expert",
+    "content": "string",
+    "author": "Michael Chi",
+    "cover": "https://miro.medium.com/fit/c/376/282/1*LhEgzn_fJ2KmBc8Ld7mEfA.png",
+    "createdAt": "",
+    "updatedAt": ""
+  },
+  {
+    "_id": "string",
+    "headLine": "A 2021 Roadmap to Learning React  ",
+    "subHead": "All the things you need to know to go from beginner to expert",
+    "content": "string",
+    "author": "Michael Chi",
+    "cover": "https://miro.medium.com/fit/c/376/282/1*LhEgzn_fJ2KmBc8Ld7mEfA.png",
+    "createdAt": "",
+    "updatedAt": ""
+  },
+  {
+    "_id": "string",
+    "headLine": "A 2021 Roadmap to Learning React  ",
+    "subHead": "All the things you need to know to go from beginner to expert",
+    "content": "string",
+    "author": "Michael Chi",
+    "cover": "https://miro.medium.com/fit/c/376/282/1*LhEgzn_fJ2KmBc8Ld7mEfA.png",
+    "createdAt": "",
+    "updatedAt": ""
+  }
+]
