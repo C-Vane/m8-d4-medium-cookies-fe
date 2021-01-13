@@ -1,4 +1,5 @@
-.article-title-input {
+.article-title-input,
+.article-subHeader-input {
   width: 100%;
   height: 75px;
   font-size: 36pt;
@@ -9,7 +10,13 @@
   font-weight: 600;
   color: black;
 }
-
+.article-subHeader-input {
+  font-size: 18pt;
+}
+.sticky-alert {
+  position: sticky;
+  top: 0;
+}
 .article-cover-input {
   width: 100%;
   height: 75px;

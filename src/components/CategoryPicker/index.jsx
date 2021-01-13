@@ -20,55 +20,34 @@ const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
 
 // forwardRef again here!
 // Dropdown needs access to the DOM of the Menu to measure it
-const CustomMenu = React.forwardRef(
-  ({ children, style, className, "aria-labelledby": labeledBy }, ref) => {
-    const [value, setValue] = useState("");
+const CustomMenu = React.forwardRef(({ children, style, className, "aria-labelledby": labeledBy }, ref) => {
+  const [value, setValue] = useState("");
 
-    return (
+  return (
+    <div ref={ref} style={style} className={className} aria-labelledby={labeledBy}>
       <div
-        ref={ref}
-        style={style}
-        className={className}
-        aria-labelledby={labeledBy}
+        style={{
+          position: "sticky",
+          top: -10,
+          background: "white",
+          zIndex: 2,
+          marginBottom: 50,
+          border: "1px solid white",
+        }}
       >
-        <div
-          style={{
-            position: "sticky",
-            top: -10,
-            background: "white",
-            zIndex: 2,
-            marginBottom: 50,
-            border: "1px solid white",
-          }}
-        >
-          <FormControl
-            autoFocus
-            className="mx-3 my-2 w-auto"
-            placeholder="Filter topics"
-            onChange={(e) => setValue(e.target.value)}
-            value={value}
-          />
-        </div>
-
-        <ul className="list-unstyled">
-          {React.Children.toArray(children).filter(
-            (child) =>
-              !value ||
-              child.props.children.props.id
-                .toLowerCase()
-                .startsWith(value.toLowerCase())
-          )}
-        </ul>
+        <FormControl autoFocus className='mx-3 my-2 w-auto' placeholder='Filter topics' onChange={(e) => setValue(e.target.value)} value={value} />
       </div>
-    );
-  }
-);
+
+      <ul className='list-unstyled'>{React.Children.toArray(children).filter((child) => !value || child.props.children.props.id.toLowerCase().startsWith(value.toLowerCase()))}</ul>
+    </div>
+  );
+});
 
 export default function CategoryPicker(props) {
   const [allTopics, setAllTopics] = React.useState([]);
   const [topic, setTopic] = React.useState({
-    name: "Select a topic",
-    img: "https://picsum.photos/200",
+    name: props.topic ? props.topic.name : "Select a topic",
+    img: props.topic ? props.topic.img : "https://picsum.photos/200",
   });
   React.useEffect(() => {
     const mainTopics = Object.values(topics);
@@ -79,12 +58,15 @@ export default function CategoryPicker(props) {
     }, []);
     setAllTopics(allTopics);
   }, []);
+  React.useEffect(() => {
+    setTopic(props.topic);
+  }, [props.topic]);
   return (
     <Dropdown>
-      <Dropdown.Toggle as={CustomToggle} id="dropdown-custom-components">
+      <Dropdown.Toggle as={CustomToggle} id='dropdown-custom-components'>
         {topic && (
           <div>
-            <img alt="topic" src={topic.img} width={30} height={30} />
+            <img alt='topic' src={topic.img} width={30} height={30} />
 
             <span style={{ marginLeft: "1em" }}>{topic.name} </span>
           </div>
@@ -103,7 +85,7 @@ export default function CategoryPicker(props) {
           >
             <Row id={topic.name}>
               <Col xs={2}>
-                <img alt="topic" src={topic.img} width={30} height={30} />
+                <img alt='topic' src={topic.img} width={30} height={30} />
               </Col>
               <Col>{topic.name}</Col>
             </Row>
