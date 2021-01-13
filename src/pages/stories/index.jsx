@@ -17,6 +17,7 @@ export default class Stories extends Component {
       },
       _id: "",
       author: {
+        _id: "",
         name: "",
         img: "",
       },
@@ -51,7 +52,7 @@ export default class Stories extends Component {
     const verified = this.verify();
     if (verified === true) {
       this.setState({ loading: true });
-      const response = await putFunction("articles/" + this.state.currentArticle._id, this.state.currentArticle);
+      const response = await putFunction("articles/" + this.state.currentArticle._id + "?author=1", this.state.currentArticle);
       if (response) {
         this.setState({ msg: "Article Updated" });
         this.getArticles();
@@ -69,6 +70,7 @@ export default class Stories extends Component {
                 img: "",
               },
               author: {
+                _id: "",
                 name: "",
                 img: "",
               },
@@ -94,7 +96,7 @@ export default class Stories extends Component {
         this.setState({
           loading: false,
           msg: "",
-          article: {
+          currentArticle: {
             headLine: "",
             subHead: "",
             content: "",
@@ -104,6 +106,7 @@ export default class Stories extends Component {
               img: "",
             },
             author: {
+              _id: "",
               name: "",
               img: "",
             },
@@ -206,29 +209,29 @@ export default class Stories extends Component {
             <h3>Your Articles</h3>
             <Container>
               {articles.map((article, i) => (
-                <Row key={i} className=' border-bottom m-2 hover'>
-                  <Col xs={2} sm={1}>
+                <Row key={i} className=' border-bottom m-2 pb-3 hover'>
+                  <Col sm={1} className='d-none d-md-block'>
                     {i + 1}
                   </Col>
-                  <Col xs={4} sm={2}>
+                  <Col xs={8} sm={2}>
                     {" "}
                     <Link to={"/read/" + article._id}>
                       <b>{article.headLine} </b>{" "}
                     </Link>
                   </Col>
-                  <Col xs={4} sm={2}>
+                  <Col xs={8} sm={2}>
                     {article.subHead || ""}
                   </Col>
-                  <Col xs={4} sm={2}>
+                  <Col sm={2} className='d-none d-md-block'>
                     {article.category.name}
                   </Col>
-                  <Col xs={5} sm={3}>
+                  <Col xs={12} sm={3}>
                     {article.content}
                   </Col>
-                  <Col xs={2} sm={1}>
+                  <Col xs={4} sm={2} className='d-flex'>
                     <Button
-                      variant='warning'
-                      className='text-nowrap'
+                      variant='outline-warning'
+                      className='text-nowrap mr-3'
                       onClick={() => {
                         this.setState({ currentArticle: article });
                         window.scrollTo({
@@ -239,9 +242,7 @@ export default class Stories extends Component {
                     >
                       Edit Post
                     </Button>
-                  </Col>
-                  <Col xs={2} sm={1}>
-                    <Button variant='danger' className='text-nowrap' onClick={() => this.setState({ currentArticle: article, confirm: true })}>
+                    <Button variant='outline-danger' className='text-nowrap' onClick={() => this.setState({ currentArticle: article, confirm: true })}>
                       Delete Post
                     </Button>
                   </Col>

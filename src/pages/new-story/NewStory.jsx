@@ -18,6 +18,7 @@ export default class NewStory extends Component {
         img: "",
       },
       author: {
+        _id: "1",
         name: "Vanessa",
         img: "https://myworkspace.matrix42.com/wp-content/plugins/all-in-one-seo-pack/images/default-user-image.png",
       },
@@ -76,6 +77,7 @@ export default class NewStory extends Component {
                 img: "",
               },
               author: {
+                _id: "1",
                 name: "Vanessa",
                 img: "https://myworkspace.matrix42.com/wp-content/plugins/all-in-one-seo-pack/images/default-user-image.png",
               },

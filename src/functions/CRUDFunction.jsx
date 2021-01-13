@@ -41,7 +41,7 @@ export const putFunction = async (endp, data) => {
       }),
     });
     if (response.ok) {
-      await response.json();
+      return await response.json();
     } else {
       return response.status === 400 ? await response.json() : await response.text();
     }
@@ -55,7 +55,7 @@ export const deleteFunction = async (endp) => {
       method: "DELETE",
     });
     if (response.ok) {
-      return await response.text();
+      return await response.json();
     } else {
       console.log(await response.text());
       return false;

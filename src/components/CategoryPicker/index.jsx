@@ -45,10 +45,7 @@ const CustomMenu = React.forwardRef(({ children, style, className, "aria-labelle
 
 export default function CategoryPicker(props) {
   const [allTopics, setAllTopics] = React.useState([]);
-  const [topic, setTopic] = React.useState({
-    name: props.topic ? props.topic.name : "Select a topic",
-    img: props.topic ? props.topic.img : "https://picsum.photos/200",
-  });
+  const [topic, setTopic] = React.useState({});
   React.useEffect(() => {
     const mainTopics = Object.values(topics);
     const allTopics = mainTopics.reduce((acc, curr) => {
@@ -59,7 +56,7 @@ export default function CategoryPicker(props) {
     setAllTopics(allTopics);
   }, []);
   React.useEffect(() => {
-    setTopic(props.topic);
+    setTopic({ name: props.topic === undefined ? "Select a topic" : props.topic.name, img: props.topic === undefined ? "https://picsum.photos/200" : props.topic.img });
   }, [props.topic]);
   return (
     <Dropdown>

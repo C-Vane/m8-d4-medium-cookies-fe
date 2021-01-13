@@ -14,7 +14,6 @@ export default class Home extends Component {
   };
   getArticles = async () => {
     const articles = await getFunction("articles");
-    console.log(articles);
     if (articles.length > 0) this.setState({ articles: articles });
     else this.setState({ msg: "No articles Found" });
   };
@@ -27,7 +26,7 @@ export default class Home extends Component {
       <div>
         {" "}
         <Container>
-          {articles.length > 0 ? (
+          {articles ? (
             <>
               <Row className={"row-cols-lg-3 pb-4"} style={{ borderBottom: "1px solid rgba(230, 230, 230, 1)" }}>
                 <Col>
