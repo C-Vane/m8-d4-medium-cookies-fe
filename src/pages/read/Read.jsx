@@ -80,6 +80,7 @@ class Read extends Component {
             </Row>
             <p>{subHead}</p>
             <p>{content}</p>
+            {cover && <img src={cover} className='contain' style={{ height: 50, width: 50 }} />}
 
             <Reactions reviews={this.state.article.reviews} editResponse={this.editResponse} deleteResponse={this.deleteResponse} user={this.state.user} postReview={this.postReview} />
           </>

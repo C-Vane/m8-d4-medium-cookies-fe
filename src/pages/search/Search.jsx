@@ -4,6 +4,7 @@ import ArticleListItem from "../../components/ArticleListItem/ArticleListItem";
 import "./styles.scss";
 import TagsList from "../../components/TagsList/TagsList";
 import queryString from "query-string";
+import { getFunction } from "../../functions/CRUDFunction";
 
 export default class Search extends React.Component {
   constructor(props) {
@@ -13,22 +14,25 @@ export default class Search extends React.Component {
     this.state = {
       selected: search.topic ? "topics" : "articles",
       query: search.topic || search.article || "",
-      articles,
+      articles: [],
     };
   }
 
-  componentDidMount = () => this.queryDidChange(this.state.query);
+  componentDidMount = () => {
+    this.getArticles();
+    this.queryDidChange(this.state.query);
+  };
 
+  getArticles = async (search, page) => {
+    const articles = await getFunction(search ? "articles?search=" + search : "articles");
+    if (articles) this.setState({ articles });
+  };
   queryDidChange = (newQuery) => {
     const query = newQuery.toLocaleLowerCase();
-    this.setState({
-      query,
-      articles: query
-        ? this.state.selected === "articles"
-          ? articles.filter((article) => article.headLine.toLocaleLowerCase().includes(query))
-          : articles.filter((article) => article.category && article.category.toLocaleLowerCase().includes(query))
-        : articles,
-    });
+    console.log(query);
+    this.setState({ query: newQuery });
+    query.length > 3 && this.getArticles(query);
+    query.length === 0 && this.getArticles();
   };
 
   setSelected = (selection) => {
