@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Alert, Button, Col, Container, Form, Modal, Row } from "react-bootstrap";
+import ReactQuill from "react-quill";
 import { Link } from "react-router-dom";
 import CategoryPicker from "../../components/CategoryPicker";
 import { deleteFunction, getFunction, putFunction } from "../../functions/CRUDFunction";
@@ -16,19 +17,20 @@ export default class Stories extends Component {
         img: "",
       },
       _id: "",
-      author: {
-        _id: "",
-        name: "",
-        img: "",
-      },
+      author: "",
       cover: "",
+    },
+    user: {
+      _id: "6000abec6be406061cbda560",
+      name: "Vanessa",
+      img: "https://myworkspace.matrix42.com/wp-content/plugins/all-in-one-seo-pack/images/default-user-image.png",
     },
     confirm: false,
     msg: [],
     loading: false,
   };
   getArticles = async () => {
-    const articles = await getFunction("articles");
+    const { articles } = await getFunction("users/" + this.state.user._id);
     if (articles) this.setState({ articles });
     else this.setState({ msg: "No articles Found" });
   };
@@ -36,7 +38,7 @@ export default class Stories extends Component {
     this.getArticles();
   };
   verify = () => {
-    const { content, headLine, category, author } = this.state.article;
+    const { content, headLine, category, author } = this.state.currentArticle;
     return headLine.length < 1
       ? "Please add Title"
       : content.length < 1
@@ -47,11 +49,13 @@ export default class Stories extends Component {
       ? "Please log in to Post"
       : true;
   };
-  updateArticle = async () => {
+  updateArticle = async (e) => {
+    e.preventDefault();
     const verified = this.verify();
     if (verified === true) {
       this.setState({ loading: true });
-      const response = await putFunction("articles/" + this.state.currentArticle._id + "?author=1", this.state.currentArticle);
+      const response = await putFunction("articles/" + this.state.currentArticle._id, this.state.currentArticle);
+      console.log(response);
       if (response) {
         this.setState({ msg: "Article Updated" });
         this.getArticles();
@@ -68,11 +72,7 @@ export default class Stories extends Component {
                 name: "",
                 img: "",
               },
-              author: {
-                _id: "",
-                name: "",
-                img: "",
-              },
+              author: "",
               cover: "",
             },
           });
@@ -86,9 +86,10 @@ export default class Stories extends Component {
     }
   };
   deleteArticle = async () => {
-    this.setState({ loading: true, confirm: false });
+    this.setState({ loading: true });
     const response = await deleteFunction("articles/" + this.state.currentArticle._id);
-    if (response) {
+    console.log(response);
+    if (response.ok) {
       this.setState({ msg: "Article Deleted" });
       this.getArticles();
       setTimeout(() => {
@@ -104,15 +105,14 @@ export default class Stories extends Component {
               name: "",
               img: "",
             },
-            author: {
-              _id: "",
-              name: "",
-              img: "",
-            },
+            author: "",
             cover: "",
+            loading: false,
           },
         });
       }, 1500);
+    } else {
+      console.log(response);
     }
   };
   render() {
@@ -171,21 +171,23 @@ export default class Stories extends Component {
                 placeholder='Sub Header'
               />
             </Form.Group>
-            <Form.Group>
-              <Form.Label>Content</Form.Label>
-              <Form.Control
-                type='text'
-                value={content}
-                as='textarea'
-                rows={3}
-                onChange={(e) => {
-                  const currentArticle = { ...this.state.currentArticle };
-                  currentArticle.content = e.target.value;
-                }}
-                placeholder='Tell your story'
-                required
-              />
-            </Form.Group>
+
+            <Form.Label>Content</Form.Label>
+            <ReactQuill
+              modules={Stories.modules}
+              id='content'
+              value={content}
+              formats={Stories.formats}
+              ref={this.editor}
+              theme='bubble'
+              onChange={(html) => {
+                const { currentArticle } = this.state;
+                currentArticle.content = html;
+                this.setState({ currentArticle });
+              }}
+              placeholder='Tell your story...'
+            />
+
             <Form.Group>
               <Form.Label>Cover</Form.Label>
               <Form.Control
@@ -208,7 +210,7 @@ export default class Stories extends Component {
             <h3>Your Articles</h3>
             <Container>
               {articles.map((article, i) => (
-                <Row key={i} className=' border-bottom m-2 pb-3 hover'>
+                <Row key={i} className=' border-bottom m-2 pb-3 hover' style={{ height: "150px", overflowX: "hidden" }}>
                   <Col sm={1} className='d-none d-md-block'>
                     {i + 1}
                   </Col>
@@ -225,7 +227,7 @@ export default class Stories extends Component {
                     {article.category.name}
                   </Col>
                   <Col xs={12} sm={3}>
-                    {article.content}
+                    {article.content.includes("</") ? <div dangerouslySetInnerHTML={{ __html: article.content }}></div> : article.content}
                   </Col>
                   <Col xs={4} sm={2} className='d-flex'>
                     <Button
@@ -270,8 +272,8 @@ export default class Stories extends Component {
               <Button
                 variant='danger'
                 onClick={() => {
-                  this.deleteArticle();
                   this.setState({ confirm: false });
+                  this.deleteArticle();
                 }}
               >
                 Yes
@@ -283,3 +285,16 @@ export default class Stories extends Component {
     );
   }
 }
+
+Stories.modules = {
+  toolbar: [[{ header: "1" }, { header: "2" }], ["bold", "italic", "blockquote"], [{ align: "" }, { align: "center" }, { align: "right" }, { align: "justify" }], ["link", "image"], ["clean"]],
+  clipboard: {
+    // toggle to add extra line breaks when pasting HTML:
+    matchVisual: false,
+  },
+};
+/*
+ * Quill editor formats
+ * See https://quilljs.com/docs/formats/
+ */
+Stories.formats = ["header", "bold", "italic", "blockquote", "align", "link", "image"];

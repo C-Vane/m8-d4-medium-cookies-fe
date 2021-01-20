@@ -12,7 +12,7 @@ class Read extends Component {
     article: {},
     msg: "",
     user: {
-      _id: "1",
+      _id: "6000abec6be406061cbda560",
       name: "Vanessa",
       img: "https://myworkspace.matrix42.com/wp-content/plugins/all-in-one-seo-pack/images/default-user-image.png",
     },
@@ -28,7 +28,7 @@ class Read extends Component {
   postReview = async (text) => {
     const review = {
       text,
-      author: this.state.user,
+      author: this.state.user._id,
     };
     const article = await postFunction("articles/" + this.props.match.params.slug + "/reviews", review);
     if (article) this.setState({ article });
@@ -46,6 +46,11 @@ class Read extends Component {
   };
   componentDidUpdate = (prevProp, prevState) => {
     prevState.article !== this.state.article && this.setState({ loading: false });
+  };
+  postClaps = async () => {
+    const article = await postFunction("articles/" + this.props.match.params.slug + "/claps", { _id: this.state.user._id });
+    if (article) this.setState({ article });
+    else this.setState({ msg: "Error Occured Please refrash the page" });
   };
   render() {
     const { author, content, headLine, subHead, cover, createdAt, category } = this.state.article;
@@ -79,10 +84,18 @@ class Read extends Component {
               </Col>
             </Row>
             <p>{subHead}</p>
-            <p>{content}</p>
+            <p>{content.includes("</") ? <div dangerouslySetInnerHTML={{ __html: content }}></div> : content}</p>
             {cover && <img src={cover} className='contain' style={{ height: 50, width: 50 }} />}
 
-            <Reactions reviews={this.state.article.reviews} editResponse={this.editResponse} deleteResponse={this.deleteResponse} user={this.state.user} postReview={this.postReview} />
+            <Reactions
+              reviews={this.state.article.reviews}
+              claps={this.state.article.claps}
+              postClaps={this.postClaps}
+              editResponse={this.editResponse}
+              deleteResponse={this.deleteResponse}
+              user={this.state.user}
+              postReview={this.postReview}
+            />
           </>
         ) : (
           <div>Loading....</div>
