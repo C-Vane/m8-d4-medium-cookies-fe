@@ -14,7 +14,7 @@ export default class Home extends Component {
   };
   getArticles = async () => {
     const articles = await getFunction("articles");
-    if (articles.length > 0) this.setState({ articles: articles });
+    if (articles) this.setState({ articles: articles });
     else this.setState({ msg: "No articles Found" });
   };
   componentDidMount = () => {

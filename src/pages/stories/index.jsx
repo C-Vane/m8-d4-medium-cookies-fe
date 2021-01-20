@@ -29,7 +29,7 @@ export default class Stories extends Component {
   };
   getArticles = async () => {
     const articles = await getFunction("articles");
-    if (articles.length > 0) this.setState({ articles });
+    if (articles) this.setState({ articles });
     else this.setState({ msg: "No articles Found" });
   };
   componentDidMount = () => {
