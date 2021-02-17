@@ -14,24 +14,28 @@ export default class NavBar extends Component {
 
   getUser = async () => {
     const user = await getFunction("users/me");
-    console.log(user);
-    if (user) this.setState({ user });
+    if (user) {
+      this.setState({ user, signedIn: true });
+    }
   };
   signOut = async () => {
     const response = await postFunction("users/logOut", { refreshToken: localStorage.getItem("refreshToken") });
-    console.log(response);
-    localStorage.clear();
-    this.setSignedIn(false);
+    if (response.ok) {
+      console.log(response);
+      localStorage.clear();
+      window.location.reload();
+    }
   };
   setLogIn = (value) => this.setState({ logIn: value });
 
-  setSignedIn = (value) => this.setState({ signedIn: value });
+  setSignedIn = (value) => {
+    value && this.getUser();
+  };
 
   componentDidMount = () => {
     const token = localStorage.getItem("token");
     if (token) {
-      this.setState({ signedIn: true });
-      this.getUser();
+      this.setSignedIn(true);
     }
   };
   render() {

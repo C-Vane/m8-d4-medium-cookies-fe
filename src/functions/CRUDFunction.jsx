@@ -1,7 +1,9 @@
 const url = process.env.REACT_APP_URL;
+const token = localStorage.getItem("token");
+const refreshToken = localStorage.getItem("refreshToken");
 export const getFunction = async (endp) => {
   try {
-    const response = await fetch(url + endp);
+    const response = token ? await fetch(url + endp, { headers: { Authorization: "Bearer " + token } }) : await fetch(url + endp);
     if (response.ok) {
       return await response.json();
     } else {
@@ -19,6 +21,7 @@ export const postFunction = async (endp, data) => {
       body: JSON.stringify(data),
       headers: new Headers({
         "Content-Type": "application/json",
+        Authorization: "Bearer " + token,
       }),
     });
     if (response.ok) {
@@ -38,6 +41,7 @@ export const putFunction = async (endp, data) => {
       body: JSON.stringify(data),
       headers: new Headers({
         "Content-Type": "application/json",
+        Authorization: "Bearer " + token,
       }),
     });
     if (response.ok) {
@@ -53,6 +57,7 @@ export const deleteFunction = async (endp) => {
   try {
     const response = await fetch(url + endp, {
       method: "DELETE",
+      headers: { Authorization: "Bearer " + token },
     });
     if (response.ok) {
       return await response.json();
