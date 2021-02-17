@@ -11,19 +11,23 @@ class Read extends Component {
   state = {
     article: {},
     msg: "",
-    user: {
-      _id: "6000abec6be406061cbda560",
-      name: "Vanessa",
-      img: "https://myworkspace.matrix42.com/wp-content/plugins/all-in-one-seo-pack/images/default-user-image.png",
-    },
+    user: {},
   };
   getArticle = async () => {
     const article = await getFunction("articles/" + this.props.match.params.slug);
     if (article) this.setState({ article });
     else this.setState({ msg: "Error Occured Please refrash the page" });
   };
+  getUser = async () => {
+    const user = await getFunction("users/me");
+    console.log(user);
+    if (user) {
+      this.setState({ user });
+    }
+  };
   componentDidMount = () => {
     this.getArticle();
+    this.getUser();
   };
   postReview = async (text) => {
     const review = {
@@ -48,7 +52,7 @@ class Read extends Component {
     prevState.article !== this.state.article && this.setState({ loading: false });
   };
   postClaps = async () => {
-    const article = await postFunction("articles/" + this.props.match.params.slug + "/claps", { _id: this.state.user._id });
+    const article = await postFunction("articles/" + this.props.match.params.slug + "/clap", { _id: this.state.user._id });
     if (article) this.setState({ article });
     else this.setState({ msg: "Error Occured Please refrash the page" });
   };
@@ -60,7 +64,7 @@ class Read extends Component {
           <>
             <h1>{headLine}</h1>
             <Row style={{ marginTop: 20, marginBottom: 20 }}>
-              <Col xs={1}>
+              <Col xs={1} className='pr-5'>
                 <Image style={{ width: 50, height: 50, marginRight: 10 }} src={author.img || "https://miro.medium.com/fit/c/96/96/1*xVwJ4C9D1sjrRc-sR_jO0w.jpeg"} roundedCircle />
               </Col>
               <Col>
@@ -83,10 +87,11 @@ class Read extends Component {
                 </div>
               </Col>
             </Row>
-            <p>{subHead}</p>
-            <p>{content.includes("</") ? <div dangerouslySetInnerHTML={{ __html: content }}></div> : content}</p>
-            {cover && <img src={cover} className='contain' style={{ height: 50, width: 50 }} />}
-
+            <div className='mb-3'>
+              <b>{subHead}</b>
+              <p>{content.includes("</") ? <div dangerouslySetInnerHTML={{ __html: content }}></div> : content}</p>
+              {cover && <img src={cover} className='contain w-100' />}
+            </div>
             <Reactions
               reviews={this.state.article.reviews}
               claps={this.state.article.claps}

@@ -17,7 +17,6 @@ export default class NewStory extends Component {
         name: "",
         img: "",
       },
-      author: "6000abec6be406061cbda560",
       cover: "",
     },
     msg: "",
@@ -27,7 +26,6 @@ export default class NewStory extends Component {
   onChange = (e) => {
     const article = { ...this.state.article };
     if (typeof e === "string") {
-      console.log(e);
       article.content = e;
       this.setState({ article });
     } else {
@@ -42,23 +40,16 @@ export default class NewStory extends Component {
     }
   };
   verify = () => {
-    const { content, headLine, category, author } = this.state.article;
-    return headLine.length < 1
-      ? "Please add Title"
-      : content.length < 1
-      ? "Please add content"
-      : category.name.length < 1
-      ? "Please chose a category"
-      : author.name.length < 1
-      ? "Please log in to Post"
-      : true;
+    let { content, headLine, category } = this.state.article;
+    console.log(headLine, content, category);
+    return headLine.length < 1 ? "Please add Title" : content.length < 1 ? "Please add content" : category.name.length < 1 ? "Please chose a category" : true;
   };
   postArticle = async () => {
     const verified = this.verify();
     if (verified === true) {
       this.setState({ loading: true });
       const response = await postFunction("articles", this.state.article);
-      if (response) {
+      if (response._id) {
         this.setState({ msg: "Article Posted" });
         setTimeout(() => {
           this.setState({

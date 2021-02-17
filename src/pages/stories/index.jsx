@@ -20,18 +20,15 @@ export default class Stories extends Component {
       author: "",
       cover: "",
     },
-    user: {
-      _id: "6000abec6be406061cbda560",
-      name: "Vanessa",
-      img: "https://myworkspace.matrix42.com/wp-content/plugins/all-in-one-seo-pack/images/default-user-image.png",
-    },
+    user: {},
     confirm: false,
     msg: [],
     loading: false,
   };
   getArticles = async () => {
-    const { articles } = await getFunction("users/" + this.state.user._id);
-    if (articles) this.setState({ articles });
+    const user = await getFunction("users/me");
+    console.log(user);
+    if (user) this.setState({ articles: user.articles, user: user });
     else this.setState({ msg: "No articles Found" });
   };
   componentDidMount = () => {
