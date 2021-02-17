@@ -1,27 +1,12 @@
 <img src="./src/assets/medium_wordmark.png"/>
 
+### <h1> AUTHORIZATION and AUTHENTICATION </h1>
 
-# Start
+- Create the register & login page for the project.
 
-- Click use this template button and create a clone repository on your github
-- Clone repository to your local machine
-- Run npm install to add dependencies
-- Start to develop 
+- When the users insert the credentials, test them out to see if the provided credentials are valid. (dont use alert anymore pls!, use proper components from bootstrap)
 
-# Colors
+-  After successful login, store the credentials and redirect user to homepage.
 
-```css
-:root {
-  --title-color: #000;
-  --text-color: #757575;
-  --button-color: #298917;
-}
-```
+- Authorized user should see his/her articles and only they should be able to edit their articles.
 
-# Fonts
-
-Roboto , sohne
-
-# Assets
-
-https://www.dropbox.com/sh/bc21oygguhllg2b/AAAGHLtvegn6NfSbtCkFwyqEa?dl=0
