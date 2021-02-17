@@ -55,23 +55,11 @@ export default class NewStory extends Component {
           this.setState({
             loading: false,
             msg: "",
-            article: {
-              headLine: "",
-              subHead: "",
-              content: "",
-              category: {
-                name: "",
-                img: "",
-              },
-              author: {
-                _id: "6000abec6be406061cbda560",
-                name: "Vanessa",
-                img: "https://myworkspace.matrix42.com/wp-content/plugins/all-in-one-seo-pack/images/default-user-image.png",
-              },
-              cover: "",
-            },
+            article: {},
           });
         }, 1500);
+      } else {
+        console.log(response);
       }
     } else {
       this.setState({ msg: verified });
@@ -107,7 +95,7 @@ export default class NewStory extends Component {
             <input onKeyDown={this.onKeyDown} value={subHead} id='subHead' onChange={this.onChange} placeholder='Sub header' className='article-subHeader-input mt-0 pt-0' />
 
             <ReactQuill modules={NewStory.modules} id='content' value={content} formats={NewStory.formats} ref={this.editor} theme='bubble' onChange={this.onChange} placeholder='Tell your story...' />
-            <input onKeyDown={this.onKeyDown} id='cover' value={cover} onChange={this.onChange} placeholder='Cover link e.g : https://picsum.photos/800' className='article-cover-input' />
+            <input onKeyDown={this.onKeyDown} id='cover' value={cover} onChange={this.onChange} placeholder='Cover link e.g : https://picsum.photos/800' type='url' className='article-cover-input' />
 
             <Button variant='success' onClick={this.postArticle} className='post-btn'>
               Post

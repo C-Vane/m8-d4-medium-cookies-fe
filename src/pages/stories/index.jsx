@@ -35,16 +35,8 @@ export default class Stories extends Component {
     this.getArticles();
   };
   verify = () => {
-    const { content, headLine, category, author } = this.state.currentArticle;
-    return headLine.length < 1
-      ? "Please add Title"
-      : content.length < 1
-      ? "Please add content"
-      : category.name.length < 1
-      ? "Please chose a category"
-      : author.name.length < 1
-      ? "Please log in to Post"
-      : true;
+    const { content, headLine, category } = this.state.currentArticle;
+    return headLine.length < 1 ? "Please add Title" : content.length < 1 ? "Please add content" : category.name.length < 1 ? "Please chose a category" : true;
   };
   updateArticle = async (e) => {
     e.preventDefault();
@@ -60,18 +52,8 @@ export default class Stories extends Component {
           this.setState({
             loading: false,
             msg: "",
-            article: {
-              headLine: "",
-              subHead: "",
-              content: "",
-              _id: "",
-              category: {
-                name: "",
-                img: "",
-              },
-              author: "",
-              cover: "",
-            },
+            currentArticle: {},
+            article: {},
           });
         }, 1500);
       }
@@ -226,10 +208,10 @@ export default class Stories extends Component {
                   <Col xs={12} sm={3}>
                     {article.content.includes("</") ? <div dangerouslySetInnerHTML={{ __html: article.content }}></div> : article.content}
                   </Col>
-                  <Col xs={4} sm={2} className='d-flex'>
+                  <div xs={4} sm={2} className=''>
                     <Button
                       variant='outline-warning'
-                      className='text-nowrap mr-3'
+                      className='text-nowrap w-100'
                       onClick={() => {
                         this.setState({ currentArticle: article });
                         window.scrollTo({
@@ -240,10 +222,10 @@ export default class Stories extends Component {
                     >
                       Edit Post
                     </Button>
-                    <Button variant='outline-danger' className='text-nowrap' onClick={() => this.setState({ currentArticle: article, confirm: true })}>
+                    <Button variant='outline-danger' className='text-nowrap w-100' onClick={() => this.setState({ currentArticle: article, confirm: true })}>
                       Delete Post
                     </Button>
-                  </Col>
+                  </div>
                 </Row>
               ))}
             </Container>

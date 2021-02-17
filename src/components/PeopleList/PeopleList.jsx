@@ -1,17 +1,15 @@
 import React from "react";
 import { Card, Badge } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { getFunction } from "../../functions/CRUDFunction";
 import "./styles.scss";
 
 export default class PeopleList extends React.Component {
   state = { people: [] };
 
   componentDidMount = async () => {
-    const response = await fetch("https://randomuser.me/api/?results=8");
-
-    if (response.status !== 200) return;
-
-    const people = (await response.json()).results
+    const users = await getFunction("users");
+    const people = users
       .map((person) => ({
         ...person,
         newStories: Math.random() > 0.5 ? Math.floor(Math.random() * 20) : 0,
@@ -24,7 +22,7 @@ export default class PeopleList extends React.Component {
     <div className='people-container'>
       {this.state.people.map((person, key) => (
         <Card key={key} style={{ border: "none", margin: "2px", position: "relative" }}>
-          <Card.Img variant='top' src={person.picture.large} className='rounded-circle' />
+          <Card.Img variant='top' src={person.img} className='rounded-circle' />
           {person.newStories > 0 && (
             <Badge
               pill
@@ -43,7 +41,7 @@ export default class PeopleList extends React.Component {
           <Card.Body className='p-0 text-center'>
             <Link to='#' className='text-decoration-none' style={{ color: "#292929" }}>
               <span style={{ fontSize: "0.7em", display: "inline-block" }}>
-                {person.name.first} {person.name.last}
+                {person.name} {person.surname}
               </span>
             </Link>
           </Card.Body>
