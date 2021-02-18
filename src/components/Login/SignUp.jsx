@@ -1,4 +1,4 @@
-import { Paper, TextField } from "@material-ui/core";
+import { TextField } from "@material-ui/core";
 import React, { useState } from "react";
 import { Button } from "react-bootstrap";
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
@@ -16,11 +16,8 @@ const SignUp = (props) => {
   const logIn = async (e) => {
     e.preventDefault();
     const response = await postFunction("users/login", { email, password });
-    console.log(response);
-    if (response.token) {
-      localStorage.clear();
-      localStorage.setItem("token", response.token);
-      localStorage.setItem("refreshToken", response.refreshToken);
+
+    if (response.ok) {
       window.location.reload();
       props.setSignedIn(true);
     } else {

@@ -1,8 +1,7 @@
-import { Paper, TextField, IconButton } from "@material-ui/core";
+import { Paper, IconButton } from "@material-ui/core";
 import CloseIcon from "@material-ui/icons/Close";
 import React, { useState } from "react";
-import { Button, Container } from "react-bootstrap";
-import { postFunction } from "../../functions/CRUDFunction";
+import { Container } from "react-bootstrap";
 import Join from "./Join";
 import SignIn from "./SignIn";
 import SignUp from "./SignUp";

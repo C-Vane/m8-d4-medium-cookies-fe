@@ -16,13 +16,16 @@ export default class NavBar extends Component {
     const user = await getFunction("users/me");
     if (user) {
       this.setState({ user, signedIn: true });
+      this.setState({ signedId: true });
+    } else {
+      this.setState({ signedId: false });
     }
   };
   signOut = async () => {
-    const response = await postFunction("users/logOut", { refreshToken: localStorage.getItem("refreshToken") });
+    const response = await postFunction("users/logOut");
     if (response.ok) {
       console.log(response);
-      localStorage.clear();
+      this.setSignedIn(false);
       window.location.reload();
     }
   };
@@ -33,10 +36,7 @@ export default class NavBar extends Component {
   };
 
   componentDidMount = () => {
-    const token = localStorage.getItem("token");
-    if (token) {
-      this.setSignedIn(true);
-    }
+    this.getUser();
   };
   render() {
     return (

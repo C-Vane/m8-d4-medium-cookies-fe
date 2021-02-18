@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import NavBar from "./components/NavBar/NavBar";
 import Home from "./pages/home/Home";
@@ -21,19 +21,6 @@ const routes = [
 ];
 
 function App() {
-  useEffect(() => {
-    const queryString = window.location.search;
-    const params = new URLSearchParams(queryString);
-    const token = params.get("token");
-    const refreshToken = params.get("refreshToken");
-    if (token && refreshToken) {
-      localStorage.clear();
-      localStorage.setItem("token", token);
-      localStorage.setItem("refreshToken", refreshToken);
-      window.location.replace("/");
-    }
-  }, []);
-
   return (
     <Router>
       <NavBar />

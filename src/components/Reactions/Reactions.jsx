@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { IoLogoTwitter, IoLogoLinkedin, IoLogoFacebook } from "react-icons/io";
 import { IoBookmarkOutline } from "react-icons/io5";
-import { FaRegComment } from "react-icons/fa";
 import { Button, Modal } from "react-bootstrap";
 import ResponsesItem from "../ResponsesItem/ResponsesItem";
 import { Link } from "react-router-dom";

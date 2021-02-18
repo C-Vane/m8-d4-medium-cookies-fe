@@ -20,7 +20,6 @@ class Read extends Component {
   };
   getUser = async () => {
     const user = await getFunction("users/me");
-    console.log(user);
     if (user) {
       this.setState({ user });
     }
