@@ -12,7 +12,7 @@ export default function TopicsToFollow() {
       <Row>
         {topics.map((topic, key) => (
           <>
-            <Col xs={12} className='d-flex align-items-center'>
+            <Col xs={12} key={key} className='d-flex align-items-center'>
               <strong style={{ color: "black" }}>{topic}</strong>
               <Button variant='outline-success' className='ml-auto'>
                 Follow

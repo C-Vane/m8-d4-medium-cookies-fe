@@ -34,8 +34,8 @@ export default class Home extends Component {
                 </Col>
 
                 <Col className={"flex-column w-100"}>
-                  {articles.slice(1, 5).map((article) => (
-                    <ArticleListItem articleImg={"left"} headingFont={"small"} article={article} />
+                  {articles.slice(1, 5).map((article, key) => (
+                    <ArticleListItem articleImg={"left"} headingFont={"small"} key={key} article={article} />
                   ))}
                 </Col>
 
@@ -47,8 +47,8 @@ export default class Home extends Component {
               </Row>
               <Row className={"py-4 mt-4"}>
                 <Col className={"col-lg-8 pr-5 pl-2"}>
-                  {articles.slice(6).map((article) => (
-                    <ArticleListItem articleImg={"left"} headingFont={"large"} subheading article={article} />
+                  {articles.slice(6).map((article, key) => (
+                    <ArticleListItem articleImg={"left"} headingFont={"large"} key={key} subheading article={article} />
                   ))}
                 </Col>
                 <Col className={"col-lg-4 "}>
@@ -57,8 +57,8 @@ export default class Home extends Component {
                       {" "}
                       <IoBookmarksOutline style={{ fontSize: 20 }} /> <span className={"ml-2"}>READING LIST </span>
                     </div>
-                    {articles.slice(0, 3).map((article) => (
-                      <ArticleListItem headingFont={"small"} article={article} />
+                    {articles.slice(0, 3).map((article, key) => (
+                      <ArticleListItem headingFont={"small"} article={article} key={key} />
                     ))}
                   </div>
                   <Footer />

@@ -25,8 +25,8 @@ function App() {
   return (
     <Router>
       <NavBar />
-      {routes.map(({ path, component }) => (
-        <Route exact path={path} component={component} />
+      {routes.map(({ path, component }, key) => (
+        <Route exact path={path} component={component} key={key} />
       ))}
     </Router>
   );

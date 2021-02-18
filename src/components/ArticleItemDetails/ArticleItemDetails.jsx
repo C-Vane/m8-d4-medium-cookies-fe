@@ -30,7 +30,7 @@ class ArticleItemDetails extends React.Component {
         {this.props.subheading && (
           <div className={"subheading"}>
             <p>
-              <Link to={"/read/" + this.props._id}>{this.props.article.subHead}</Link>
+              <Link to={"/read/" + this.props.article._id}>{this.props.article.subHead}</Link>
             </p>
           </div>
         )}

@@ -14,7 +14,6 @@ export default class NavBar extends Component {
 
   getUser = async () => {
     const user = await getFunction("users/me");
-    console.log(user);
     if (user) {
       this.setState({ user, signedIn: true });
     }
