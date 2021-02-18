@@ -4,7 +4,7 @@ import logo from "../../assets/medium_logo.svg";
 import { IoNotificationsOutline, IoBookmarksOutline, IoSearchOutline } from "react-icons/io5";
 import { Link } from "react-router-dom";
 import { getFunction, postFunction } from "../../functions/CRUDFunction";
-import LogIn from "../Login/LogIn";
+import LogIn from "../Login/ClientCredentials";
 export default class NavBar extends Component {
   state = {
     logIn: false,

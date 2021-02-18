@@ -189,29 +189,26 @@ export default class Stories extends Component {
             <h3>Your Articles</h3>
             <Container>
               {articles.map((article, i) => (
-                <Row key={i} className=' border-bottom m-2 pb-3 hover' style={{ height: "150px", overflowX: "hidden" }}>
-                  <Col sm={1} className='d-none d-md-block'>
-                    {i + 1}
-                  </Col>
-                  <Col xs={8} sm={2}>
-                    {" "}
+                <Row key={i} className=' border-bottom m-2 pb-3 hover' style={{ height: "200px", overflowX: "hidden" }}>
+                  <Col xs={10} sm={8}>
+                    <b>No.</b> {i + 1}
                     <Link to={"/read/" + article._id}>
-                      <b>{article.headLine} </b>{" "}
+                      <h2>{article.headLine} </h2>{" "}
                     </Link>
+                    <h5> {article.subHead || ""}</h5>
+                    {article.content.includes("</") ? <div dangerouslySetInnerHTML={{ __html: article.content }}></div> : <div> {article.content}</div>}
+                    {article.img && <img src={article.img} className='img-fluid' />}
                   </Col>
-                  <Col xs={8} sm={2}>
-                    {article.subHead || ""}
-                  </Col>
-                  <Col sm={2} className='d-none d-md-block'>
-                    {article.category.name}
-                  </Col>
-                  <Col xs={12} sm={3}>
-                    {article.content.includes("</") ? <div dangerouslySetInnerHTML={{ __html: article.content }}></div> : article.content}
+                  <Col sm={2} className='d-none d-md-block' className='d-none d-sm-block'>
+                    <div>
+                      <img src={article.category.img} className='img-fluid w-50 mr-3' />
+                      {article.category.name}
+                    </div>
                   </Col>
                   <div xs={4} sm={2} className=''>
                     <Button
                       variant='outline-warning'
-                      className='text-nowrap w-100'
+                      className='text-nowrap w-100 mb-3'
                       onClick={() => {
                         this.setState({ currentArticle: article });
                         window.scrollTo({

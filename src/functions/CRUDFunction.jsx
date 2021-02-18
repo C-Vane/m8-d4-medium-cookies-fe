@@ -48,7 +48,8 @@ export const postFunction = async (endp, data) => {
         const refetch = tokenRefresh(postFunction, endp, data);
         if (refetch) return refetch;
       }
-      return response.status === 400 ? await response.text() : await response.text();
+
+      return await response.text();
     }
   } catch (error) {
     console.log(error);

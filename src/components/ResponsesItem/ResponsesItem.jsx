@@ -24,7 +24,7 @@ export default function ResponsesItem({ user, response, editResponse, deleteResp
           <b>{response.author.name} </b>
         </span>
       </Link>
-      <Row className='justify-content-between w-100'>
+      <Row className='justify-content-between w-100 '>
         <Col>
           <h4 className={"date"}>
             <div className={"d-flex"}>
@@ -51,8 +51,8 @@ export default function ResponsesItem({ user, response, editResponse, deleteResp
             <p>{response.text}</p>
           )}
         </Col>
-        <Dropdown>
-          <Dropdown.Toggle variant='light' className='rounded-pill' style={{ fontSize: "1.5rem", color: "rgba(0,0,0,0.5)" }}>
+        <Dropdown style={{ top: -20 }}>
+          <Dropdown.Toggle variant='link' className=' p-0 m-0 border-0 rounded-circle' style={{ fontSize: "1rem", height: "1rem", color: "rgba(0,0,0,0.5)" }}>
             <IoIosMore />
           </Dropdown.Toggle>
 

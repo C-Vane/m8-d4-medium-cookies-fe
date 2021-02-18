@@ -9,13 +9,15 @@ export default class PeopleList extends React.Component {
 
   componentDidMount = async () => {
     const users = await getFunction("users");
-    const people = users
-      .map((person) => ({
-        ...person,
-        newStories: Math.random() > 0.5 ? Math.floor(Math.random() * 20) : 0,
-      }))
-      .sort((a, b) => b.newStories - a.newStories);
-    this.setState({ people });
+    if (users) {
+      const people = users
+        .map((person) => ({
+          ...person,
+          newStories: Math.random() > 0.5 ? Math.floor(Math.random() * 20) : 0,
+        }))
+        .sort((a, b) => b.newStories - a.newStories);
+      this.setState({ people });
+    }
   };
 
   render = () => (
