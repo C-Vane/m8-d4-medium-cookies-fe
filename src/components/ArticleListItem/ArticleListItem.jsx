@@ -10,7 +10,7 @@ class ArticleListItem extends React.Component {
           <>
             {" "}
             <ArticleItemDetails {...this.props} />
-            {this.props.articleImg && (
+            {this.props.article.cover && (
               <Link to={"/read/" + this.props.article._id}>
                 <img alt='cover' className={this.props.articleImg === "top" ? "img-large" : "img-small"} src={this.props.article.cover} />
               </Link>

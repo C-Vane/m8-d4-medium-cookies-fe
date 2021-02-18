@@ -89,7 +89,7 @@ class Read extends Component {
             </Row>
             <div className='mb-3'>
               <b>{subHead}</b>
-              <p>{content.includes("</") ? <div dangerouslySetInnerHTML={{ __html: content }}></div> : content}</p>
+              <div className='article_text'>{content.includes("</") ? <div dangerouslySetInnerHTML={{ __html: content }}></div> : content}</div>
               {cover && <img src={cover} className='contain w-100' />}
             </div>
             <Reactions
