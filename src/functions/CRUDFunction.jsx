@@ -2,7 +2,7 @@ const url = process.env.REACT_APP_URL;
 
 export const tokenRefresh = async (func, endp, data) => {
   const response = await postFunction("users/refreshToken");
-
+  console.log(response);
   if (response.ok) {
     return await func(endp, data);
   } else {
