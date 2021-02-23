@@ -8,3 +8,4 @@ Frontend
 
 - Add login with Google button to log in with Google to the app
 
+completed and deployed on https://medium-vane.vercel.app/
