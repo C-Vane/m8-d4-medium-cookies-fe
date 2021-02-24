@@ -29,7 +29,6 @@ export default class Search extends React.Component {
   };
   queryDidChange = (newQuery) => {
     const query = newQuery.toLocaleLowerCase();
-    console.log(query);
     this.setState({ query: newQuery });
     query.length > 3 && this.getArticles(query);
     query.length === 0 && this.getArticles();

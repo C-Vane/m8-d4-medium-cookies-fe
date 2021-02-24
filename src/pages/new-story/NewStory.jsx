@@ -41,7 +41,6 @@ export default class NewStory extends Component {
   };
   verify = () => {
     let { content, headLine, category } = this.state.article;
-    console.log(headLine, content, category);
     return headLine.length < 1 ? "Please add Title" : content.length < 1 ? "Please add content" : category.name.length < 1 ? "Please chose a category" : true;
   };
   postArticle = async () => {

@@ -24,7 +24,6 @@ export default class NavBar extends Component {
   signOut = async () => {
     const response = await postFunction("users/logOut");
     if (response.ok) {
-      console.log(response);
       this.setSignedIn(false);
       window.location.reload();
     }

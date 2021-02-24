@@ -27,7 +27,6 @@ export default class Stories extends Component {
   };
   getArticles = async () => {
     const user = await getFunction("users/me");
-    console.log(user);
     if (user) this.setState({ articles: user.articles, user: user });
     else this.setState({ msg: "No articles Found" });
   };
@@ -44,7 +43,6 @@ export default class Stories extends Component {
     if (verified === true) {
       this.setState({ loading: true });
       const response = await putFunction("articles/" + this.state.currentArticle._id, this.state.currentArticle);
-      console.log(response);
       if (response) {
         this.setState({ msg: "Article Updated" });
         this.getArticles();
@@ -67,7 +65,6 @@ export default class Stories extends Component {
   deleteArticle = async () => {
     this.setState({ loading: true });
     const response = await deleteFunction("articles/" + this.state.currentArticle._id);
-    console.log(response);
     if (response.ok) {
       this.setState({ msg: "Article Deleted" });
       this.getArticles();

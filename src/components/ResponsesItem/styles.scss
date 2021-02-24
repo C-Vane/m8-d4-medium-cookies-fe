@@ -6,7 +6,7 @@
   right: 0 !important;
   top: -25px !important;
   bottom: 0 !important;
-  width: 25rem;
+  max-width: 25rem;
   border-color: transparent;
 }
 .modalRight .modal-content {
@@ -17,11 +17,10 @@
 .modal-open .modal {
   overflow: unset !important;
 }
-.modalCenter {
-}
+
 .modalCenter .modal-content {
   height: 100vh;
-  width: 100vh;
+  width: 100%;
   overflow-y: scroll;
   border-radius: 0;
   border: none;
