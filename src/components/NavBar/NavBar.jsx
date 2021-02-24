@@ -5,6 +5,7 @@ import { IoNotificationsOutline, IoBookmarksOutline, IoSearchOutline, IoMenuShar
 import { Link } from "react-router-dom";
 import { getFunction, postFunction } from "../../functions/CRUDFunction";
 import LogIn from "../Login/ClientCredentials";
+
 export default class NavBar extends Component {
   state = {
     logIn: false,

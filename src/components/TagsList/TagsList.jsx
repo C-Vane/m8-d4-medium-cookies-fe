@@ -3,18 +3,7 @@ import "./styles.scss";
 import { Link } from "react-router-dom";
 class TagsList extends React.Component {
   state = {
-    tags: [
-      "React",
-      "JavaScript",
-      "Web Development",
-      "Programming",
-      "React Native",
-      "React.js",
-      "Redux",
-      "Front End Development",
-      "Technology",
-      "Startup",
-    ],
+    tags: ["React", "JavaScript", "Web Development", "Programming", "React Native", "React.js", "Redux", "Front End Development", "Technology", "Startup"],
   };
   render() {
     return (
@@ -24,9 +13,7 @@ class TagsList extends React.Component {
         </div>
         <ul className={"tags-list "}>
           {this.state.tags.map((tag) => (
-            <li>
-              <Link to={"/"}>{tag}</Link>
-            </li>
+            <li onClick={() => this.props.setQuery(tag)}>{tag}</li>
           ))}
         </ul>
       </div>

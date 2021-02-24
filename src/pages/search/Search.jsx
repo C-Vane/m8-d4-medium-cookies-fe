@@ -55,7 +55,7 @@ export default class Search extends React.Component {
           </Col>
 
           <Col xs={12} md={4} className='order-md-2'>
-            <TagsList />
+            <TagsList setQuery={this.queryDidChange} />
           </Col>
           <Col xs={12} md={8} className='mt-4'>
             {this.state.articles.map((article) => (

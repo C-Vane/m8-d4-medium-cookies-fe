@@ -18,8 +18,8 @@ export default function Reactions({ reviews, postReview, user, editResponse, del
           justifyContent: "space-between",
         }}
       >
-        <div style={{ display: "flex", alignItems: "center" }}>
-          <Button variant='link' className='p-0' onClick={postClaps}>
+        <div style={{ display: "flex", alignItems: "center", marginBottom: 50 }}>
+          <Button variant='link' className='p-0' onClick={user._id && postClaps}>
             <svg width='33' height='33' viewBox='0 0 33 33' aria-label='clap'>
               <path
                 d={
@@ -68,21 +68,23 @@ export default function Reactions({ reviews, postReview, user, editResponse, del
           </Modal.Body>
         </Modal>
       )}
-      <div style={{ marginTop: 50, marginBottom: 200 }}>
-        <label>What are your thoughts?</label>
-        <textarea style={{ width: "100%", padding: 20 }} value={review} onChange={(e) => setReview(e.target.value)} />
-        <Button
-          variant='success'
-          onClick={() => {
-            if (review.length > 0) {
-              setReview("");
-              postReview(review);
-            }
-          }}
-        >
-          Send
-        </Button>
-      </div>
+      {user._id && (
+        <div style={{ marginTop: 50, marginBottom: 200 }}>
+          <label>What are your thoughts?</label>
+          <textarea style={{ width: "100%", padding: 20 }} value={review} onChange={(e) => setReview(e.target.value)} />
+          <Button
+            variant='success'
+            onClick={() => {
+              if (review.length > 0) {
+                setReview("");
+                postReview(review);
+              }
+            }}
+          >
+            Send
+          </Button>
+        </div>
+      )}
 
       {clapsModal && (
         <Modal show={clapsModal} onHide={() => setClaps(!clapsModal)} className='modalCenter'>

@@ -16,9 +16,6 @@ export default class Stories extends Component {
         name: "",
         img: "",
       },
-      _id: "",
-      author: "",
-      cover: "",
     },
     user: {},
     confirm: false,
@@ -26,7 +23,7 @@ export default class Stories extends Component {
     loading: false,
   };
   getArticles = async () => {
-    const user = await getFunction("users/me");
+    const user = this.props.user;
     if (user) this.setState({ articles: user.articles, user: user });
     else this.setState({ msg: "No articles Found" });
   };
@@ -81,9 +78,6 @@ export default class Stories extends Component {
               name: "",
               img: "",
             },
-            author: "",
-            cover: "",
-            loading: false,
           },
         });
       }, 1500);
@@ -181,7 +175,7 @@ export default class Stories extends Component {
             </Button>
           </Form>
         )}
-        {articles.length > 0 ? (
+        {articles ? (
           <div>
             <h3>Your Articles</h3>
             <Container>
