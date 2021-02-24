@@ -24,12 +24,18 @@ export default class Stories extends Component {
   };
   getArticles = async () => {
     const user = this.props.user;
-    if (user) this.setState({ articles: user.articles, user: user });
+    const articles = user.articles;
+    if (user) this.setState({ articles, user });
     else this.setState({ msg: "No articles Found" });
   };
   componentDidMount = () => {
     this.getArticles();
   };
+
+  componentDidUpdate = (prevProps) => {
+    if (prevProps !== this.props) this.getArticles();
+  };
+
   verify = () => {
     const { content, headLine, category } = this.state.currentArticle;
     return headLine.length < 1 ? "Please add Title" : content.length < 1 ? "Please add content" : category.name.length < 1 ? "Please chose a category" : true;
