@@ -18,13 +18,13 @@ const ClientCredentials = ({ setLogIn, setSignedIn }) => {
   };
   return (
     <div className='backdrop  position-fixed'>
-      <Container className=''>
-        <Paper className='w-50 m-auto text-center' elevation={3}>
+      <Container>
+        <Paper className='w-xs-100 m-auto text-center' elevation={3}>
           <IconButton aria-label='close' className='float-right' onClick={() => setLogIn(false)}>
             <CloseIcon />
           </IconButton>
-          <div className='p-4'>
-            <div className='mb-4 p-3'>
+          <div className='p-md-4 ps-1'>
+            <div className='mb-4 p-md-3 py-3'>
               {!form ? (
                 welcome ? (
                   <Welcome setWelcome={setWelcome} setSignIn={setCurrent} />

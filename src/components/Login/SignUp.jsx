@@ -37,7 +37,7 @@ const SignUp = (props) => {
     <div className='pt-3'>
       <h2>Sign up with email</h2>
       <p className='h5 pt-4'>Enter your data to create an account.</p>
-      <form onSubmit={signUp} className='d-flex flex-column p-4'>
+      <form onSubmit={signUp} className='d-flex flex-column p-md-4 p-2'>
         {error.length > 0 && <i className='text-danger'>{error}</i>}
         <TextField className='m-3' value={name} onChange={(e) => setName(e.target.value)} label='Your name' type='text' required />
         <TextField className='m-3' value={surname} onChange={(e) => setSurname(e.target.value)} label='Your Surname' type='text' required />
@@ -45,7 +45,7 @@ const SignUp = (props) => {
         <TextField className='m-3' value={password} onChange={(e) => setPassword(e.target.value)} label='Password' type='password' required />
         <TextField className='m-3' value={image} onChange={(e) => setImage(e.target.value)} label='Profile Image URL' type='url' />
         <div className='my-4'>
-          <Button variant='dark' className='m-auto w-50 rounded-0' type='submit'>
+          <Button variant='dark' className='m-auto w-md-50 w-75 rounded-0' type='submit'>
             Sign Up
           </Button>
           <div className='m-auto w-50 pt-4 rounded-0 text-success cursor-pointer' onClick={() => props.setCurrent(false, false)}>

@@ -25,12 +25,12 @@ const SignIn = (props) => {
     <div className='pt-3'>
       <h2>Sign in with email</h2>
       <p className='h5 pt-4'>Enter your email and password to sign in.</p>
-      <form onSubmit={logIn} className='d-flex flex-column p-4 mt-3'>
+      <form onSubmit={logIn} className='d-flex flex-column p-md-4 p-2 mt-3'>
         {error.length > 0 && <i className='text-danger'>{error}</i>}
         <TextField className='m-3' value={email} onChange={(e) => setEmail(e.target.value)} label='Your email' type='email' required />
         <TextField className='m-3' value={password} onChange={(e) => setPassword(e.target.value)} label='Password' type='password' required />
         <div className='my-4'>
-          <Button variant='dark' className='w-50 rounded-0 m-auto' type='submit'>
+          <Button variant='dark' className='w-md-50 w-75 rounded-0 m-auto' type='submit'>
             Sign in
           </Button>
           <div className='m-auto w-50 pt-4 rounded-0 text-success cursor-pointer' onClick={() => props.setCurrent(false, true)}>

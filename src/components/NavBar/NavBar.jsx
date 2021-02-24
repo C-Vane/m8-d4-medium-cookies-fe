@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Navbar, Nav, Dropdown, Container, Image, Button } from "react-bootstrap";
 import logo from "../../assets/medium_logo.svg";
-import { IoNotificationsOutline, IoBookmarksOutline, IoSearchOutline } from "react-icons/io5";
+import { IoNotificationsOutline, IoBookmarksOutline, IoSearchOutline, IoMenuSharp } from "react-icons/io5";
 import { Link } from "react-router-dom";
 import { getFunction, postFunction } from "../../functions/CRUDFunction";
 import LogIn from "../Login/ClientCredentials";
@@ -44,24 +44,29 @@ export default class NavBar extends Component {
         <Navbar style={{ paddingTop: 24 }}>
           <Container>
             <Navbar.Brand as={Link} to='/'>
-              <img style={{ height: 54 }} alt='medium-logo' src={logo} />
+              <img alt='medium-logo' height='54' id='medium-logo' src={logo} />
             </Navbar.Brand>
-            <h5 style={{ fontWeight: "bold", marginTop: "0.6em" }}>Good Morning</h5>
+            <h5 style={{ fontWeight: "bold", marginTop: "0.6em" }} className='d-none d-md-block'>
+              Good Morning
+            </h5>
             <Navbar.Toggle aria-controls='basic-navbar-nav' />
             <Navbar.Collapse id='basic-navbar-nav'>
               <Nav className='ml-auto'>
-                <Nav.Link as={Link} to='/search'>
-                  <IoSearchOutline style={{ fontSize: 20 }} />
-                </Nav.Link>
-                <Nav.Link href='#home'>
-                  <IoBookmarksOutline style={{ fontSize: 20 }} />
-                </Nav.Link>
-                <Nav.Link href='#link' className='medium-icon'>
-                  <IoNotificationsOutline style={{ fontSize: 20 }} />
-                </Nav.Link>
-                <Nav.Link href='#link' className='medium-icon'>
-                  <Button variant='outline-secondary'>Upgrade</Button>
-                </Nav.Link>
+                <div className='d-none d-md-flex'>
+                  <Nav.Link as={Link} to='/search'>
+                    <IoSearchOutline style={{ fontSize: 20 }} />
+                  </Nav.Link>
+                  <Nav.Link href='#home'>
+                    <IoBookmarksOutline style={{ fontSize: 20 }} />
+                  </Nav.Link>
+                  <Nav.Link href='#link' className='medium-icon'>
+                    <IoNotificationsOutline style={{ fontSize: 20 }} />
+                  </Nav.Link>
+                  <Nav.Link href='#link' className='medium-icon d-none d-md-block'>
+                    <Button variant='outline-secondary'>Upgrade</Button>
+                  </Nav.Link>
+                </div>
+
                 {this.state.signedIn ? (
                   <Dropdown>
                     <Dropdown.Toggle variant='success' as='div'>
@@ -86,6 +91,26 @@ export default class NavBar extends Component {
                     <Button variant='outline-secondary'>Sign In</Button>
                   </Nav.Link>
                 )}
+                <Dropdown className='d-md-none'>
+                  <Dropdown.Toggle variant='success' as='div'>
+                    <IoMenuSharp style={{ fontSize: 20 }} />
+                  </Dropdown.Toggle>
+
+                  <Dropdown.Menu>
+                    <Dropdown.Item as={Link} to='/search'>
+                      <IoSearchOutline style={{ fontSize: 20 }} /> Search
+                    </Dropdown.Item>
+                    <Dropdown.Item href='#home'>
+                      <IoBookmarksOutline style={{ fontSize: 20 }} /> Home
+                    </Dropdown.Item>
+                    <Dropdown.Item href='#link' className='medium-icon'>
+                      <IoNotificationsOutline style={{ fontSize: 20 }} /> Notification
+                    </Dropdown.Item>
+                    <Dropdown.Item href='#link' className='medium-icon'>
+                      <Button variant='outline-secondary'>Upgrade</Button>
+                    </Dropdown.Item>
+                  </Dropdown.Menu>
+                </Dropdown>
               </Nav>
             </Navbar.Collapse>
           </Container>

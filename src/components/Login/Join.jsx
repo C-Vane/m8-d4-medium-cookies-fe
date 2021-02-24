@@ -8,10 +8,10 @@ const Join = ({ setWelcome, setSignUp }) => {
       <h2>Join Medium.</h2>
       <p className='w-75 px-4 m-auto'>Create an account to receive great stories in your inbox, personalize your homepage, and follow authors and topics that you love.</p>
       <div className=' d-flex flex-column align-items-center my-4'>
-        <Button variant='outlined' href={process.env.REACT_APP_URL + "users/googleLogin"} className='mb-3 w-50 text-normal'>
+        <Button variant='outlined' href={process.env.REACT_APP_URL + "users/googleLogin"} className='mb-3 w-md-50 text-normal'>
           <img src='https://developers.google.com/identity/images/g-logo.png' alt='Google logo' width='20' className='img-fluid mr-3'></img> Sign Up with Google
         </Button>
-        <Button className='text-normal w-50' variant='outlined' onClick={() => setSignUp(true, false)}>
+        <Button className='text-normal w-md-50' variant='outlined' onClick={() => setSignUp(true, false)}>
           <MailOutlineIcon className='mr-4' /> Sign up with Email
         </Button>
       </div>

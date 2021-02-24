@@ -7,10 +7,10 @@ const Welcome = ({ setWelcome, setSignIn }) => {
     <div>
       <h2>Welcome back.</h2>
       <div className=' d-flex flex-column align-items-center my-4'>
-        <Button variant='outlined' href={process.env.REACT_APP_URL + "users/googleLogin"} className='mb-3 w-50 text-normal'>
+        <Button variant='outlined' href={process.env.REACT_APP_URL + "users/googleLogin"} className='mb-3 w-md-50 text-normal'>
           <img src='https://developers.google.com/identity/images/g-logo.png' alt='google logo' width='20' className='img-fluid mr-3'></img> Sign in with Google
         </Button>
-        <Button className='text-normal w-50' variant='outlined' onClick={() => setSignIn(true, true)}>
+        <Button className='text-normal w-md-50 ' variant='outlined' onClick={() => setSignIn(true, true)}>
           <MailOutlineIcon className='mr-4' /> Sign in with Email
         </Button>
       </div>

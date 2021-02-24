@@ -13,6 +13,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: var(--text-color);
+  font-size: small;
 }
 
 h1,
@@ -25,8 +26,7 @@ h6 {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
 .cursor-pointer {
@@ -78,4 +78,19 @@ a.dropdown-item:hover {
 
 a {
   color: inherit;
+}
+
+#medium-logo {
+  height: 30px;
+}
+@media (min-width: 768px) {
+  #medium-logo {
+    height: 54px !important;
+  }
+  body {
+    font-size: inherit;
+  }
+  .w-xs-100 {
+    max-width: 50%;
+  }
 }

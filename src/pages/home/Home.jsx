@@ -29,17 +29,17 @@ export default class Home extends Component {
           {articles ? (
             <>
               <Row className={"row-cols-lg-3 pb-4"} style={{ borderBottom: "1px solid rgba(230, 230, 230, 1)" }}>
-                <Col>
+                <Col sm={12} md={4}>
                   <ArticleListItem article={articles[0]} articleImg={"top"} headingFont={"large"} subheading />
                 </Col>
 
-                <Col className={"flex-column w-100"}>
+                <Col sm={12} md={4} className={"flex-column w-100"}>
                   {articles.slice(1, 5).map((article, key) => (
                     <ArticleListItem articleImg={"left"} headingFont={"small"} key={key} article={article} />
                   ))}
                 </Col>
 
-                <Col>
+                <Col sm={12} md={4}>
                   <PeopleList />
                   <TopicsToFollow />
                 </Col>
